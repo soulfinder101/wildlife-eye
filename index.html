@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wildlife Eye</title>
+<link rel="icon" href="favicon.svg">
+<script>window.CESIUM_BASE_URL = 'https://cdn.jsdelivr.net/npm/cesium@1.124.0/Build/Cesium/';</script>
+<script src="https://cdn.jsdelivr.net/npm/cesium@1.124.0/Build/Cesium/Cesium.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cesium@1.124.0/Build/Cesium/Widgets/widgets.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="globe"></div>
+
+<header id="hud">
+  <div class="brand"><span class="eye"></span><div><b>WILDLIFE EYE</b><small>Encyclopedia of Earth's wildlife</small></div></div>
+  <div class="hud-stats mono">
+    <span id="clock">--:--:-- UTC</span>
+    <span id="cursor">lat —  lon —</span>
+  </div>
+  <div class="layers" id="layers">
+    <label><input type="checkbox" data-layer="routes" checked> Routes</label>
+    <label><input type="checkbox" data-layer="ranges" checked> Ranges</label>
+    <label><input type="checkbox" data-layer="cams" checked> Live cams</label>
+    <label><input type="checkbox" data-layer="density" checked> Observation density</label>
+    <label><input type="checkbox" data-layer="feed"> Live sightings feed</label>
+    <label><input type="checkbox" data-layer="night" checked> Day / night</label>
+    <select id="basemap" aria-label="Basemap">
+      <option value="sat">Satellite</option>
+      <option value="dark">Dark map</option>
+    </select>
+  </div>
+</header>
+
+<aside id="index" class="panel">
+  <div class="search">
+    <input id="q" type="search" placeholder="Search atlas species, or any animal on Earth…" autocomplete="off">
+  </div>
+  <div id="chips" class="chips"></div>
+  <div id="list" class="list"></div>
+</aside>
+
+<aside id="article" class="panel">
+  <div id="article-body"></div>
+</aside>
+
+<div id="popup" class="popup" hidden></div>
+<div id="modal" class="modal" hidden>
+  <div class="modal-box">
+    <div class="modal-head"><span id="modal-title"></span><button id="modal-close" aria-label="Close">✕</button></div>
+    <div id="modal-content"></div>
+  </div>
+</div>
+
+<script src="config.js"></script>
+<script src="data/wild.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
