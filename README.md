@@ -6,7 +6,25 @@ Your own god's-eye view: a 3D globe that is an encyclopedia of wildlife.
 
     ./start.sh          # serves on http://localhost:8642 and opens the browser
 
-(Needs an internet connection; it is a plain static site, no install step.)
+(Needs an internet connection for maps and live data; it is a plain static site, no build step.)
+
+## Install as an app (PC and phone)
+
+Wildlife Eye is an installable web app (PWA): one codebase for desktop and mobile.
+
+- **PC (Chrome / Edge):** open it and click **⤓ Install app** in the top bar, or the
+  install icon in the address bar. It then opens in its own window from the Start menu / app launcher.
+- **Android (Chrome):** menu ⋮ → *Install app* / *Add to Home screen*.
+- **iPhone / iPad (Safari):** Share → *Add to Home Screen*.
+
+Phones only allow installing from an **https://** address, so to put it on a phone,
+host the folder on any static host (GitHub Pages, Netlify, Cloudflare Pages).
+`localhost` works for installing on this PC.
+
+On phones the layout switches to bottom tabs (Globe · Species · Article) with the
+map layers in a ☰ menu. `sw.js` caches the app and Cesium so it opens offline;
+live data (pictures, sightings, cams, studies) still needs a connection. Bump
+`VERSION` in `sw.js` if you ever want to force-clear old caches.
 
 ## What's in it
 

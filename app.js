@@ -471,6 +471,7 @@ function renderArticle() {
   });
   renderPane();
   $('#article').hidden = false;
+  window.WE_view?.('article');
 }
 $('#article').addEventListener('click', (e) => {
   const t = e.target.closest('[data-tab]');

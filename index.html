@@ -2,7 +2,15 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#05090d">
+<meta name="description" content="A god's-eye globe encyclopedia of Earth's wildlife.">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Wildlife Eye">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
 <title>Wildlife Eye</title>
 <link rel="icon" href="favicon.svg">
 <script>window.CESIUM_BASE_URL = 'https://cdn.jsdelivr.net/npm/cesium@1.124.0/Build/Cesium/';</script>
@@ -20,6 +28,10 @@
   <div class="hud-stats mono">
     <span id="clock">--:--:-- UTC</span>
     <span id="cursor">lat —  lon —</span>
+  </div>
+  <div class="hud-actions">
+    <button id="install-btn" class="hud-btn" hidden>⤓ Install app</button>
+    <button id="layers-btn" class="hud-btn" aria-label="Map layers">☰ Layers</button>
   </div>
   <div class="layers" id="layers">
     <label><input type="checkbox" data-layer="routes" checked> Routes</label>
@@ -47,6 +59,12 @@
   <div id="article-body"></div>
 </aside>
 
+<nav id="mnav" aria-label="Views">
+  <button data-view="globe"><span>🌍</span>Globe</button>
+  <button data-view="species"><span>🔎</span>Species</button>
+  <button data-view="article"><span>📖</span>Article</button>
+</nav>
+
 <div id="popup" class="popup" hidden></div>
 <div id="modal" class="modal" hidden>
   <div class="modal-box">
@@ -58,5 +76,6 @@
 <script src="config.js"></script>
 <script src="data/wild.js"></script>
 <script src="app.js"></script>
+<script src="pwa.js"></script>
 </body>
 </html>
