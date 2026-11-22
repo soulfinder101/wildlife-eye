@@ -57,7 +57,9 @@ scene.globe.nightFadeInDistance = 5.0e7;
 scene.skyAtmosphere.show = true;
 scene.fog.enabled = true;
 viewer.clock.shouldAnimate = true; // real time sun position
-viewer.camera.setView({ destination: Cesium.Cartesian3.fromDegrees(-30, 25, 2.2e7) });
+// Start closer on tall, narrow screens (phones) so the globe fills the width.
+const homeHeight = () => (innerHeight > innerWidth * 1.2 ? 1.9e7 : 2.2e7);
+viewer.camera.setView({ destination: Cesium.Cartesian3.fromDegrees(-30, 25, homeHeight()) });
 
 const layers = {
   routes: new Cesium.CustomDataSource('routes'),
@@ -709,7 +711,7 @@ function goHome() {
   showGroupOnGlobe();
   renderList();
   renderHome();
-  viewer.camera.flyTo({ destination: Cesium.Cartesian3.fromDegrees(-30, 25, 2.2e7), duration: 1.6 });
+  viewer.camera.flyTo({ destination: Cesium.Cartesian3.fromDegrees(-30, 25, homeHeight()), duration: 1.6 });
 }
 
 // ---------- Boot ----------
